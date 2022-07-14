@@ -1,3 +1,4 @@
+const Notification = require("./Notification");
 const Contributor = require("./Contributor");
 const Ticket = require("./Ticket");
 const Role = require("./Role");
@@ -14,4 +15,5 @@ module.exports = {
 	Permission,
     Ticket,
     Contributor,
+    Notification,
 };
