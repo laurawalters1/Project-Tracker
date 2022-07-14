@@ -1,15 +1,16 @@
 const { Schema, model } = require("mongoose");
 
 const moment = require("moment");
-const {
-	throwHttpGraphQLError,
-} = require("apollo-server-core/dist/runHttpQuery");
 
 const userSchema = new Schema(
 	{
 		contributions: {
 			type: Schema.Types.ObjectId,
 			ref: "Contributor",
+		},
+		teams: {
+			type: Schema.Types.ObjectId,
+			ref: "Team",
 		},
 		createdAt: {
 			type: Date,
