@@ -4,6 +4,10 @@ const moment = require("moment");
 
 const contributorSchema = new Schema(
 	{
+		project: {
+			type: Schema.Types.ObjectId,
+			ref: "Project",
+		},
 		role: {
 			type: Schema.Types.ObjectId,
 			ref: "Role",
@@ -16,6 +20,12 @@ const contributorSchema = new Schema(
 			type: Date,
 			default: Date.now,
 		},
+		tickets: [
+			{
+				type: Schema.Types.ObjectId,
+				ref: "Ticket",
+			},
+		],
 	},
 	{
 		toJSON: {

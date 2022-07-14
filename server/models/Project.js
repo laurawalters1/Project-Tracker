@@ -10,7 +10,7 @@ const projectSchema = new Schema(
 				ref: "Contributor",
 			},
 		],
-		Tickets: [
+		tickets: [
 			{
 				type: Schema.Types.ObjectId,
 				ref: "Ticket",
