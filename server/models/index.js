@@ -1,3 +1,5 @@
+const Contributor = require("./Contributor");
+const Ticket = require("./Ticket");
 const Role = require("./Role");
 const Project = require("./Project");
 const Team = require("./Team");
@@ -10,4 +12,6 @@ module.exports = {
 	Project,
 	Role,
 	Permission,
+    Ticket,
+    Contributor,
 };
