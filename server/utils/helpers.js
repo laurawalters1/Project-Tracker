@@ -1,4 +1,4 @@
-const TicketPolicy = require("../policies/TicketPolicy");
+const TicketPolicy = require("../policies/contributor-policies/TicketPolicy");
 
 function can(action, model, contributor) {
 	switch (model) {

@@ -29,16 +29,6 @@ const ticketSchema = new Schema(
 	}
 );
 
-// custom method to compare and validate password for logging in
-ticketSchema.methods.policy = async function (user) {
-	const contributor = Contributor.find({
-		user: user._id,
-		project: this.project,
-	});
-
-	return contributor.role;
-};
-
 const Ticket = model("Ticket", ticketSchema);
 
 module.exports = Ticket;
