@@ -23,3 +23,5 @@ class ProjectPolicy {
 		return this.model.delete;
 	};
 }
+
+module.exports = ProjectPolicy;

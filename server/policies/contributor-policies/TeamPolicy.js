@@ -24,3 +24,5 @@ class TeamPolicy {
 		return this.model.delete;
 	};
 }
+
+module.exports = TeamPolicy;

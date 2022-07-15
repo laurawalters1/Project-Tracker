@@ -23,3 +23,5 @@ class TicketPolicy {
 		return this.model.delete;
 	};
 }
+
+module.exports = TicketPolicy;
