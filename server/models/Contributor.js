@@ -34,6 +34,18 @@ const contributorSchema = new Schema(
 	}
 );
 
+contributorSchema.methods.can = (action, model, contributor) => {
+	switch (model) {
+		case "Ticket":
+			const policy = new TicketPolicy(contributor);
+			return policy[action];
+			break;
+
+		default:
+			break;
+	}
+};
+
 const Contributor = model("Contributor", contributorSchema);
 
 module.exports = Contributor;
