@@ -34,12 +34,11 @@ const contributorSchema = new Schema(
 	}
 );
 
-contributorSchema.methods.can = (action, model, contributor) => {
+contributorSchema.methods.can = (action, model) => {
 	switch (model) {
 		case "Ticket":
-			const policy = new TicketPolicy(contributor);
+			const policy = new TicketPolicy(this);
 			return policy[action];
-			break;
 
 		default:
 			break;
