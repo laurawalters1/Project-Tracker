@@ -1,9 +1,9 @@
 const Permission = require("../models/Permission");
 
-class TicketPolicy {
+class ContributorPolicy {
 	constructor(contributor) {
 		this.model = contributor.role.permissions.findOne({
-			model: "Ticket",
+			model: "Contributor",
 		});
 	}
 

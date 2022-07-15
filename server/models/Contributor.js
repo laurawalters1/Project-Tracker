@@ -1,4 +1,5 @@
 const { Schema, model } = require("mongoose");
+const { ProjectPolicy, TicketPolicy } = require("../policies");
 
 const moment = require("moment");
 
@@ -37,9 +38,11 @@ const contributorSchema = new Schema(
 contributorSchema.methods.can = (action, model) => {
 	switch (model) {
 		case "Ticket":
-			const policy = new TicketPolicy(this);
-			return policy[action];
-
+			const ticketPolicy = new TicketPolicy(this);
+			return ticketPolicy[action];
+		case "Project":
+			const projectPolicy = new ProjectPolicy(this);
+			return projectPolicy[action];
 		default:
 			break;
 	}

@@ -1,9 +1,10 @@
 const Permission = require("../models/Permission");
 
-class TicketPolicy {
+class TeamPolicy {
+	// Need to add policy function for viewing a specific team
 	constructor(contributor) {
 		this.model = contributor.role.permissions.findOne({
-			model: "Ticket",
+			model: "Team",
 		});
 	}
 
