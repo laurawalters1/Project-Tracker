@@ -1,4 +1,4 @@
-const Permission = require("../models/Permission");
+const Permission = require("../../models/Permission");
 
 class TeamPolicy {
 	// Need to add policy function for viewing a specific team
