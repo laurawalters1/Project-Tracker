@@ -65,6 +65,19 @@ userSchema.methods.can = (action, model) => {
 	}
 };
 
+userSchema.methods.cant = (action, model) => {
+	switch (model) {
+		case "Team":
+			const teamPolicy = new TeamPolicy(this);
+			return !teamPolicy[action]();
+		case "Project":
+			const projectPolicy = new ProjectPolicy(this);
+			return !projectPolicy[action]();
+		default:
+			break;
+	}
+};
+
 // function to return all of a users tickets
 userSchema.virtual("tickets").get(function () {
 	return this.contributions.reduce((contribution) => {

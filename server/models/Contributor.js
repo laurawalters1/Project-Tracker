@@ -1,5 +1,8 @@
 const { Schema, model } = require("mongoose");
-const { TicketPolicy } = require("../policies/contributor-policies");
+const {
+	TicketPolicy,
+	TodoPolicy,
+} = require("../policies/contributor-policies");
 
 const moment = require("moment");
 
@@ -40,6 +43,22 @@ contributorSchema.methods.can = (action, model) => {
 		case "Ticket":
 			const ticketPolicy = new TicketPolicy(this);
 			return ticketPolicy[action]();
+		case "Todo":
+			const todoPolicy = new TodoPolicy(this);
+			return todoPolicy[action]();
+		default:
+			break;
+	}
+};
+
+contributorSchema.methods.cant = (action, model) => {
+	switch (model) {
+		case "Ticket":
+			const ticketPolicy = new TicketPolicy(this);
+			return !ticketPolicy[action]();
+		case "Todo":
+			const todoPolicy = new TodoPolicy(this);
+			return !todoPolicy[action]();
 		default:
 			break;
 	}
