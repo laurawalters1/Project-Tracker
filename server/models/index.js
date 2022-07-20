@@ -1,3 +1,4 @@
+const Todo = require("./Todo");
 const Notification = require("./Notification");
 const Contributor = require("./Contributor");
 const Ticket = require("./Ticket");
@@ -16,4 +17,5 @@ module.exports = {
     Ticket,
     Contributor,
     Notification,
+    Todo,
 };
