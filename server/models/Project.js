@@ -10,12 +10,29 @@ const projectSchema = new Schema(
 				ref: "Contributor",
 			},
 		],
+		projectManager: {
+			type: Schema.Types.ObjectId,
+			ref: "Contributor",
+		},
 		tickets: [
 			{
 				type: Schema.Types.ObjectId,
 				ref: "Ticket",
 			},
 		],
+		mileStones: [
+			{
+				type: Schema.Types.Schema,
+				ref: "MileStoneSchema",
+			},
+		],
+		startDate: {
+			type: Date,
+		},
+		dueDate: {
+			type: Date,
+		},
+
 		createdAt: {
 			type: Date,
 			default: Date.now,
