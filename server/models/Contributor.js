@@ -38,6 +38,7 @@ const contributorSchema = new Schema(
 	}
 );
 
+// Function to return contributor access permissions
 contributorSchema.methods.can = (action, model) => {
 	switch (model) {
 		case "Ticket":
@@ -51,6 +52,7 @@ contributorSchema.methods.can = (action, model) => {
 	}
 };
 
+// Function to return inverse contributor access permissions
 contributorSchema.methods.cant = (action, model) => {
 	switch (model) {
 		case "Ticket":

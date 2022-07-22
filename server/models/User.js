@@ -52,6 +52,7 @@ userSchema.methods.isCorrectPassword = async function (password) {
 	return bcrypt.compare(password, this.password);
 };
 
+// Function to return user access permissions
 userSchema.methods.can = (action, model) => {
 	switch (model) {
 		case "Team":
@@ -65,6 +66,7 @@ userSchema.methods.can = (action, model) => {
 	}
 };
 
+// Function to return inverse user access permissions
 userSchema.methods.cant = (action, model) => {
 	switch (model) {
 		case "Team":
@@ -81,7 +83,8 @@ userSchema.methods.cant = (action, model) => {
 // function to return all of a users tickets
 userSchema.virtual("tickets").get(function () {
 	return this.contributions.reduce((contribution) => {
-		return [...total, contribution.tickets];
+		total.concat(contribution.tickets);
+		return total;
 	}, []);
 });
 
