@@ -60,7 +60,7 @@ userSchema.methods.can = (action, model) => {
 			return teamPolicy[action]();
 		case "Project":
 			const projectPolicy = new ProjectPolicy(this);
-			return projectPolicy[action]();
+			return projectPolicy[action](this);
 		default:
 			break;
 	}

@@ -42,6 +42,32 @@ const resolvers = {
 
 			return { token, user };
 		},
+
+		addTicket: async (
+			parent,
+			{ contributor, title, content, priority, project },
+			context
+		) => {
+			const user = User.findById(context.user.id).populate("contributions");
+			if (user.cant("contribute", project)) {
+				// error
+			}
+			const contributor = Contributor.findOne({
+				_id: contributor,
+			});
+
+			if (contributor.cant("create", Ticket)) {
+				// error
+			}
+
+			const ticket = new Ticket({
+				title,
+				content,
+				priority,
+				contributor,
+				project,
+			});
+		},
 	},
 };
 

@@ -11,6 +11,13 @@ class ProjectPolicy {
 		return this.model.view;
 	};
 
+	contribute = (project, user) => {
+		return (
+			this.model.contribute &&
+			user.contributions.map((con) => con.project).includes(project)
+		);
+	};
+
 	create = () => {
 		return this.model.create;
 	};
