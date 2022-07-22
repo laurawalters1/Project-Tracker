@@ -88,6 +88,30 @@ userSchema.virtual("tickets").get(function () {
 	}, []);
 });
 
+userSchema.virtual("completedTickets").get(function () {
+	const tickets = this.tickets;
+	const completedTickets = tickets.filter((ticket) => {
+		return ticket.status === 1;
+	});
+	return completedTickets;
+});
+
+userSchema.virtual("notStartedTickets").get(function () {
+	const tickets = this.tickets;
+	const notStartedTickets = tickets.filter((ticket) => {
+		return ticket.status === 0;
+	});
+	return notStartedTickets;
+});
+
+userSchema.virtual("inProgressTickets").get(function () {
+	const tickets = this.tickets;
+	const inProgressTickets = tickets.filter((ticket) => {
+		return ticket.status === 2;
+	});
+	return inProgressTickets;
+});
+
 const User = model("User", userSchema);
 
 module.exports = User;

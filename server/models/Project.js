@@ -46,20 +46,20 @@ projectSchema.virtual("completedTickets").get(function () {
 	return completedTickets;
 });
 
-projectSchema.virtual("incompleteTickets").get(function () {
+projectSchema.virtual("notStartedTickets").get(function () {
 	const tickets = this.tickets;
-	const completedTickets = tickets.filter((ticket) => {
+	const notStartedTickets = tickets.filter((ticket) => {
 		return ticket.status === 0;
 	});
-	return completedTickets;
+	return notStartedTickets;
 });
 
 projectSchema.virtual("inProgressTickets").get(function () {
 	const tickets = this.tickets;
-	const completedTickets = tickets.filter((ticket) => {
+	const inProgressTickets = tickets.filter((ticket) => {
 		return ticket.status === 2;
 	});
-	return completedTickets;
+	return inProgressTickets;
 });
 
 const Project = model("Project", projectSchema);
