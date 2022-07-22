@@ -53,14 +53,14 @@ userSchema.methods.isCorrectPassword = async function (password) {
 };
 
 // Function to return user access permissions
-userSchema.methods.can = (action, model) => {
+userSchema.methods.can = (action, model, optional = {}) => {
 	switch (model) {
 		case "Team":
 			const teamPolicy = new TeamPolicy(this);
 			return teamPolicy[action]();
 		case "Project":
 			const projectPolicy = new ProjectPolicy(this);
-			return projectPolicy[action](this);
+			return projectPolicy[action](optional.project, this);
 		default:
 			break;
 	}

@@ -48,15 +48,15 @@ const resolvers = {
 			{ contributor, title, content, priority, project },
 			context
 		) => {
-			const user = User.findById(context.user.id).populate("contributions");
-			if (user.cant("contribute", project)) {
+			const user = User.findById(context.user.id);
+			if (user.cant("contribute", "Project", { project })) {
 				// error
 			}
 			const contributor = Contributor.findOne({
 				_id: contributor,
 			});
 
-			if (contributor.cant("create", Ticket)) {
+			if (contributor.cant("create", "Ticket")) {
 				// error
 			}
 
