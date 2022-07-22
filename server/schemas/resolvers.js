@@ -52,6 +52,8 @@ const resolvers = {
 			if (user.cant("contribute", "Project", { project })) {
 				// error
 			}
+
+			// ! Need to add extra check that checks the contributor passed in belongs to the user
 			const contributor = Contributor.findOne({
 				_id: contributor,
 			});
@@ -67,6 +69,22 @@ const resolvers = {
 				contributor,
 				project,
 			});
+		},
+
+		deleteTicket: async (parent, { contributor, ticket, project }, context) => {
+			const user = User.findById(context.user.id);
+			if (user.cant("contribute", "Project", { project })) {
+				// error
+			}
+			// ! Need to add extra check that checks the contributor passed in belongs to the user
+
+			const contributor = Contributor.findOne({
+				_id: contributor,
+			});
+
+			if (contributor.cant("delete", "Ticket", ticket)) {
+				// error
+			}
 		},
 	},
 };
