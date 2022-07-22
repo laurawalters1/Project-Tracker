@@ -66,6 +66,30 @@ contributorSchema.methods.cant = (action, model) => {
 	}
 };
 
+contributorSchema.virtual("completedTickets").get(function () {
+	const tickets = this.tickets;
+	const completedTickets = tickets.filter((ticket) => {
+		return ticket.status === 1;
+	});
+	return completedTickets;
+});
+
+contributorSchema.virtual("notStartedTickets").get(function () {
+	const tickets = this.tickets;
+	const notStartedTickets = tickets.filter((ticket) => {
+		return ticket.status === 0;
+	});
+	return notStartedTickets;
+});
+
+contributorSchema.virtual("inProgressTickets").get(function () {
+	const tickets = this.tickets;
+	const inProgressTickets = tickets.filter((ticket) => {
+		return ticket.status === 2;
+	});
+	return inProgressTickets;
+});
+
 const Contributor = model("Contributor", contributorSchema);
 
 module.exports = Contributor;
